@@ -1,6 +1,7 @@
 @extends('layouts.AdminLayout')
-
-
+@section('title')
+Users
+@endsection
 @section('content')
 <div class="card">
     <div class="card-header">
@@ -53,7 +54,7 @@
     <!-- /.card-body -->
 
   </div>
-
+  @endsection
 @section('script')
   <script>
 
@@ -102,5 +103,5 @@ success: function (success){
 
 
   </script>
-  @endsection
+
 @endsection

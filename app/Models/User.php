@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'usertype',
     ];
 
     /**
@@ -58,4 +59,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function Cart(){
+
+        return $this->hasMany(Cart::class,'idUser','id');
+    }
+    public function FormOrder(){
+
+        return $this->hasMany(FormOrder::class,'idUser','id');
+    }
 }

@@ -23,16 +23,16 @@ Table of contents
 12. portfolio
 
 --------------------------------------------- */
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
@@ -108,10 +108,10 @@ p {
   color: #2a2a2a;
 }
 
-/* 
+/*
 ---------------------------------------------
 global styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -194,17 +194,17 @@ body {
 .section-heading h2 {
   line-height: 40px;
   margin-top: 20px;
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
   font-size: 30px;
   font-weight: 900;
   color: #2a2a2a;
 }
 
 
-/* 
+/*
 ---------------------------------------------
 header
---------------------------------------------- 
+---------------------------------------------
 */
 
 .background-header {
@@ -641,10 +641,10 @@ header
 }
 
 
-/* 
+/*
 ---------------------------------------------
 banner
---------------------------------------------- 
+---------------------------------------------
 */
 
 #top {
@@ -922,7 +922,7 @@ menu
   overflow: hidden;
 }
 
-.card1 {
+/* .card1 {
   background-image: url(../images/menu-item-01.jpg);
 }
 .card2 {
@@ -936,7 +936,7 @@ menu
 }
 .card5 {
   background-image: url(../images/menu-item-05.jpg);
-}
+} */
 
 .info {
   position: relative;
@@ -968,17 +968,47 @@ menu
 }
 
 #menu .price h6 {
+    position: absolute;
+    width: auto;
+    padding: 5px;
+    height: 70px;
+    background-color: #fb5849;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 70px;
+  }
+#menu .AddCart h6
+ {
+
   position: absolute;
-  width: 70px;
+  right:0;
+  width: 100px;
+
+
   height: 70px;
-  background-color: #fb5849;
-  font-size: 20px;
+  background-color: #0864db;
+  font-size: 14px;
   font-weight: 700;
   color: #fff;
   border-radius: 3px;
   text-align: center;
   line-height: 70px;
+
 }
+#menu .AddCart:hover{
+    cursor: pointer;
+}
+
+/* #menu .AddCart a{
+    width: fill;
+    height: fill;
+    background-color: #fb5849;
+
+} */
+
 
 #menu .card .main-text-button {
   margin-left: 30px;
@@ -1001,7 +1031,7 @@ menu
 #menu .owl-dots {
   display: none;
 }
-    
+
 #menu .owl-nav .owl-prev{
   margin-right: 10px;
   outline: none;
@@ -1176,10 +1206,10 @@ chefs
 }
 
 
-/* 
+/*
 ---------------------------------------------
 reservation
---------------------------------------------- 
+---------------------------------------------
 */
 
 #reservation .section-heading {
@@ -1444,7 +1474,9 @@ offers
   margin-left: 15px;
 }
 
-#offers .tabs-content .price h6 {
+#offers .tabs-content .price h6
+
+{
   position: absolute;
   top: 15px;
   right: 0;
@@ -1461,10 +1493,10 @@ offers
 }
 
 
-/* 
+/*
 ---------------------------------------------
 footer
---------------------------------------------- 
+---------------------------------------------
 */
 
 footer {
@@ -1526,10 +1558,10 @@ footer .right-text-content ul li a:hover {
   color: #2a2a2a;
 }
 
-/* 
+/*
 ---------------------------------------------
 responsive
---------------------------------------------- 
+---------------------------------------------
 */
 
 @media (max-width: 992px) {

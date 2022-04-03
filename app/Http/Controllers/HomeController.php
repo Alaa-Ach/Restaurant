@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\food;
+use App\Models\chef;
+use App\Models\Reserve;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,13 +14,16 @@ class HomeController extends Controller
 
     public function index(){
 
-    return view('home');
+        $food=food::all();
+        $chef=chef::all();
+
+        return view('home')->with(["allfood"=>$food,"allchef"=>$chef]);
     }
 
 
     public function Admin(){
 
-    return view('Admin');
+        return view('Admin');
     }
 
     public function checkAuth(){
@@ -46,5 +52,22 @@ class HomeController extends Controller
       //  return view('Admin');
 
     }
+
+    public function Reserve(Request $request){
+        $date=date('d-m-Y', strtotime($request->date));
+        // dd($date);
+        $reserve=new Reserve;
+        $reserve->name=$request->name;
+        $reserve->email=$request->email;
+        $reserve->phone=$request->phone;
+        $reserve->number_guests=$request->number_guests;
+        $reserve->date=$date;
+        $reserve->time=$request->time;
+        $reserve->message;
+        $reserve->save();
+
+            return response()->json(['success'=>'Reserved successfully']);
+    }
+
 
 }
