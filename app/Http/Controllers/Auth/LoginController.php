@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -27,6 +28,44 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo;
+
+    // protected function authenticated($request, $user)
+    // {
+
+    //     $userType=Auth::user()->usertype;
+    //     if($userType=='1'){
+    //         $redirectTo="/dashboard";
+    //     }
+    //     else{
+    //         $redirectTo="/ahaa";
+    //     }
+
+    //     return redirect()->intended($redirectTo);
+    // }
+
+
+
+    // protected function redirectTo()
+    // {
+    //     // switch(Auth::user()->usertype){
+    //     //     case 1: $this->redirectTo='/';
+    //     //     return $this->redirectTo;
+    //     //     break;
+    //     //     case 0: $this->redirectTo='/dashboard';
+    //     //     return $this->redirectTo;
+    //     //     break;
+
+    //     // }
+    //     if(Auth::user()->usertype == 1){
+    //       return  '/dashboard';
+    //     //   return  $redirectTo='/dashboard';
+    //     }
+    //     else return '/';
+    //     // else return $this->redirectTo;
+
+
+    // }
 
     /**
      * Create a new controller instance.

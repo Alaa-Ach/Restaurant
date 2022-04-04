@@ -26,6 +26,9 @@ class FormOrder extends Model
         // return $this->BelongsTo
         return $this->hasMany(ConfirmedOrders::class,'idForm','id');
     }
+    public function user(){
 
+        return $this->hasOne(User::class,'id','idUser');
+    }
 
 }

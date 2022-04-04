@@ -21,37 +21,40 @@ class HomeController extends Controller
     }
 
 
-    public function Admin(){
+    // public function Admin(){
 
-        return view('Admin');
-    }
+    //     return view('Admin');
+    // }
 
-    public function checkAuth(){
-        $userType=Auth::user()->usertype;
-        if($userType=='1'){
-           return view('AdminDashboard.AdminPanel');
-        }
-        else{
-        //   return view('UserDashboard.UserPanel');
-            return redirect("/");
-        }
+    // public function checkAuth(){
+    //     $userType=Auth::user()->usertype;
+    //     if($userType=='1'){
+    //        return view('AdminDashboard.AdminPanel');
+    //     }
+    //     else{
+    //     //   return view('UserDashboard.UserPanel');
+    //         return redirect("/");
+    //     }
 
-        }
-
-    public function redirect(){
-
-        $userType=Auth::user()->usertype;
-        if($userType=='1'){
-           return redirect("/Admin");
-        }
-        else{
-            return redirect("/");
+    //     }
+ public function dashboard(){
+    return view('AdminDashboard.AdminPanel');
         }
 
+    // public function redirect(){
 
-      //  return view('Admin');
+    //     $userType=Auth::user()->usertype;
+    //     if($userType=='1'){
+    //        return redirect("/Admin");
+    //     }
+    //     else{
+    //         return redirect("/");
+    //     }
 
-    }
+
+    //   //  return view('Admin');
+
+    // }
 
     public function Reserve(Request $request){
         $date=date('d-m-Y', strtotime($request->date));

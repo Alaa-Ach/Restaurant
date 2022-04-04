@@ -93,15 +93,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2" >
+                <nav class="mt-2">
 
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-header" style="font-size:1.2em">Navigation:</li>
+                        <li class="nav-header" style="font-size:1.2em">Navigation:</li>
                         <li class="nav-item">
-                            <a href={{Route("Dashboard.usersIndex")}} class="nav-link">
+                            <a href={{ Route('Dashboard.usersIndex') }} class="nav-link">
                                 <svg style="" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                                     <path
@@ -121,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
 
                         <li class="nav-item">
-                            <a href={{Route("Dashboard.platsIndex")}} class="nav-link">
+                            <a href={{ Route('Dashboard.platsIndex') }} class="nav-link">
                                 <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 512 512">
                                     <path
@@ -135,8 +135,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
 
-                        <li class="nav-item" >
-                            <a href={{Route("Dashboard.chefsIndex")}} class="nav-link">
+                        <li class="nav-item">
+                            <a href={{ Route('Dashboard.chefsIndex') }} class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     aria-hidden="true" role="img" id="footer-icon-name" width="20px" height="20px"
                                     preserveAspectRatio="xMidYMid meet" viewBox="0 0 22 22">
@@ -152,14 +152,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <svg fill="currentColor" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <a href={{ Route('Dashboard.ReserveIndex') }} class="nav-link">
+                                <svg fill="currentColor" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 448 512">
                                     <path
                                         d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 248H128V192H48V248zM48 296V360H128V296H48zM176 296V360H272V296H176zM320 296V360H400V296H320zM400 192H320V248H400V192zM400 408H320V464H384C392.8 464 400 456.8 400 448V408zM272 408H176V464H272V408zM128 408H48V448C48 456.8 55.16 464 64 464H128V408zM272 192H176V248H272V192z" />
                                 </svg>
 
                                 <p>
                                     Reservation
+
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href={{ Route('Dashboard.OrdersIndex') }} class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                                    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                    <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                  </svg>
+
+                                <p>
+                                    Orders
 
                                 </p>
                             </a>
@@ -233,6 +248,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- jQuery -->
     <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
@@ -251,10 +268,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         display: inline;
         margin-right: 2%;
         margin-top: -5px;
-        width:30px ;
-        height:25px
+        width: 30px;
+        height: 25px
     }
-    .nav-item{
+
+    .nav-item {
         font-size: 20px
     }
 

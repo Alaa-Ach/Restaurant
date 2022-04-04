@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use app\Http\Controllers\Auth\LoginController;
 class RedirectIfAuthenticated
 {
     /**
@@ -26,6 +26,10 @@ class RedirectIfAuthenticated
             foreach ($guards as $guard) {
                 if (Auth::guard($guard)->check()) {
                     return redirect(RouteServiceProvider::HOME);
+                    // return redirect(LoginController::class,'redirectTo');
+                    // return redirect('/dashboard');
+                    // return redirect(RouteServiceProvider::HOME);
+                    // return redirect(LoginController::$redirectTo);
                 }
             }
 

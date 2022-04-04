@@ -22,11 +22,17 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/', [HomeController::class,"index"] );
-Route::get('/Admin', [HomeController::class,"Admin"] );
+
+// Route::get('/login',function () {
+// return redirect('/login');
+// })->name('login');
+
+
+// Route::get('/Admin', [HomeController::class,"Admin"] );
 // Route::get('/Admin', function(){
 //     return view('Admin');
 // } );
-Route::get('/redirect', [HomeController::class,"redirect"] );
+// Route::get('/redirect', [HomeController::class,"redirect"] );
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
@@ -41,13 +47,14 @@ Route::get('/redirect', [HomeController::class,"redirect"] );
 
 //     return view('AdminDashboard.AdminPanel');
 // })->name('dashboard');
-Route::middleware(['auth:sanctum', 'verified'])
-->get('/dashboard',[HomeController::class,"checkAuth"])->name('dashboard');
+Route::middleware(['Admin','PreventBack'])
+->get('/Dashboard',[HomeController::class,"dashboard"])->name('dashboard');
 
-
+// Route::get('/dashboard')
 
 //////////////////////////////////// ADMIN ROUTES
-Route::prefix('dashboard')->name('Dashboard.')->group(function () {
+// Route::prefix('Dashboard')->name('Dashboard.')->group(['middleware'=>['Admin','PreventBack']],function () {
+Route::prefix('Dashboard')->name('Dashboard.')->middleware(['Admin','PreventBack'])->group(function () {
     Route::get('users',[AdminController::class,'usersIndex'])->name("usersIndex");
     Route::delete('users/delete',[AdminController::class,'userDelete'])->name('userDelete');
 
@@ -61,9 +68,13 @@ Route::prefix('dashboard')->name('Dashboard.')->group(function () {
     Route::get('chefs',[AdminController::class,'chefsIndex'])->name("chefsIndex");
     Route::post('AddChef',[AdminController::class,'AddChef'])->name("AddChef");
     Route::delete('DeleteChef',[AdminController::class,'DeleteChef'])->name('DeleteChef');
-
-
     Route::post('UpdateChef',[AdminController::class,'UpdateChef'])->name("UpdateChef");
+
+    Route::get('Reserve',[AdminController::class,'ReserveIndex'])->name("ReserveIndex");
+    Route::delete('DeleteReserve',[AdminController::class,'DeleteReserve'])->name('DeleteReserve');
+
+    Route::get('Orders',[AdminController::class,'OrdersIndex'])->name("OrdersIndex");
+    Route::delete('DeleteOrder',[AdminController::class,'DeleteOrder'])->name('DeleteOrder');
 
 
 });
@@ -75,13 +86,8 @@ Route::post('/Reserve',[HomeController::class,'Reserve'])->name("Reserve");
 //User Login
 
 
-Route::middleware(['auth:sanctum', 'verified'])
-->group(function () {
-//    if( Auth::check()){
+Route::group(['middleware'=>['user','PreventBack']],function () {
 
-
-
-    // if(Auth::user()->usertype=='0'){
 
         Route::post('/AddtoCart',[UserController::class,'AddtoCart'])->name("AddtoCart");
         Route::get('/ViewCart',[UserController::class,'ViewCart'])->name("ViewCart");
@@ -90,16 +96,8 @@ Route::middleware(['auth:sanctum', 'verified'])
         Route::delete('/DltPlatCart',[UserController::class,'DltPlatCart'])->name("DltPlatCart");
 
         Route::post('/OrderNow',[UserController::class,'OrderNow'])->name("OrderNow");
-// }
+
 });
-
-// Route::post('/AddtoCart',[UserController::class,'AddtoCart'])->name("AddtoCart");
-// Route::get('/ViewCart',[UserController::class,'ViewCart'])->name("ViewCart");
-// Route::get('/ViewOrders',[UserController::class,'ViewOrders'])->name("ViewOrders");
-// Route::post('/UpdateQuantity',[UserController::class,'UpdateQuantity'])->name("UpdateQuantity");
-// Route::delete('/DltPlatCart',[UserController::class,'DltPlatCart'])->name("DltPlatCart");
-
-// Route::post('/OrderNow',[UserController::class,'OrderNow'])->name("OrderNow");
 
 
 

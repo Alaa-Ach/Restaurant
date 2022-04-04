@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\chef;
 use App\Models\food;
+use App\Models\FormOrder;
+use App\Models\Reserve;
 use Illuminate\Http\Request;
 use Nette\Utils\Json;
 
@@ -146,4 +148,34 @@ class AdminController extends Controller
 
         return response()->json(['success'=>$imageName]);
     }
+
+
+
+    //Reservation
+    public function ReserveIndex(){
+
+      $Reservations= Reserve::all();
+        // dd($Reservations);
+        return view('AdminDashboard.Reservation')->with('Reservations',$Reservations);
+    }
+
+    public function DeleteReserve(Request $request){
+        $idReservation=$request->idReservation;
+            Reserve::find($idReservation)->delete();
+        return response()->json(['success'=>"aha"]);
+    }
+
+
+    //ViewOrders
+    public function OrdersIndex(){
+
+    //   $Users= User::all()->where('usertype','!=','1');
+      $Orders= FormOrder::all();
+        // dd($Reservations);
+        return view('AdminDashboard.Orders')->with('Orders',$Orders);
+    }
+
+
+
+
 }

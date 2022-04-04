@@ -7,7 +7,9 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
+use app\Http\Controllers\Auth\LoginController;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -17,7 +19,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/login';
+    // public const HOME = '/nice';
+    public const HOME = '/';
+    // public const HOME = [LoginController::class,'redirectTo'];
+    // public const HOME = '/';
 
     /**
      * The controller namespace for the application.
