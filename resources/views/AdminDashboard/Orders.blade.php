@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
- {{-- MODAL DELETED SUCCESSFUL --}}
+    {{-- MODAL DELETED SUCCESSFUL --}}
     <!------ Include the above in your HEAD tag ---------->
 
 
@@ -37,135 +37,146 @@
     </div>
     <!--Model Popup ends-->
 
-{{-- $Users->sortByDesc('created_at') as $User --}}
+    {{-- $Users->sortByDesc('created_at') as $User --}}
 
 
-<div style="margin:5px;padding:5px" class="accordion" id="accordionExample">
-    @php
-        $i = 0;
-    @endphp
-    {{-- Start Drop Downs --}}
-        {{-- Start Loop --}}
-        @foreach ($Orders->sortByDesc('id') as $Order)
-        <div class="accordion-item">
+    <div style="margin:5px;padding:5px" class="accordion" id="accordionExample">
+        <div>
+            <form action="{{ route('Dashboard.OrdersSearch') }}" method="get">
 
-            <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapse{{ $i }}" aria-expanded="true"
-                    aria-controls="collapse{{ $i }}">
-                    Order #{{ $i++ }} | {{ $Order->created_at }}
-
-                    <span style="position: absolute;right: 50px;">From : {{$Order->user->name}}</span>
-                </button>
-            </h2>
-            <div id="collapse{{ $i - 1 }}" class="accordion-collapse collapse "
-                aria-labelledby="headingOne" >
-                <div class="accordion-body">
-                    {{-- Form --}}
-                    <div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Full name :</label>
-                                <input value="{{ $Order->Fullname }}" readonly type="text"
-                                    name="Fullname" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Phone Number:</label>
-                                <input value="{{ $Order->Phone }}" readonly type="text"
-                                    name="Phone" class="form-control" id="inputEmail4">
-                            </div>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Address :</label>
-                            <input value="{{ $Order->Address }}" readonly type="text"
-                                class="form-control" id="inputAddress">
-                        </div>
+                <input style="border-radius: 5px;
+                            border-width: 5px;
+                            padding: 5px;" type="search" name="search" placeholder="Search here">
+                <button class="btn btn-primary" id="btnSearch" type="submit">Search</button>
+            </form>
 
 
-                        <div class="form-row ">
-                            <div class="form-group col-md-4 float-left">
-                                <label for="inputCity">City</label>
-                                <input value="{{ $Order->City }}" readonly name="City" type="text"
-                                    class="form-control" id="inputCity">
-                            </div>
+        </div>
+        <br>
+        <div id="table">
+            @php
+                $i = 0;
+            @endphp
+            {{-- Start Loop --}}
+            @foreach ($Orders->sortByDesc('id') as $Order)
+                <div class="accordion-item">
 
-                            <div class="form-group col-md-4  ">
-                                <label for="inputZip">Zip</label>
-                                <input value="{{ $Order->Zip }}" readonly name="Zip" type="text"
-                                    class="form-control" id="inputZip">
-                            </div>
-                            <div class="form-group col-md-2  ">
-                                <label for="totalOrder">Total Order:</label>
-                                <div class="d-flex">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse{{ $i }}" aria-expanded="true"
+                            aria-controls="collapse{{ $i }}">
+                            Order #{{ $i++ }} | {{ $Order->created_at }}
 
-                                    <input value="{{ $Order->totalOrder }}" readonly type="text"
-                                        class="form-control" name="totalOrder" id="totalOrder">
-                                    <h6 class="auto-ml" style="margin:auto">DH</h6>
+                            <span style="position: absolute;right: 50px;">From :
+                                {{ $Order->user ? $Order->user->name : 'Deleted Account' }}</span>
+                        </button>
+                    </h2>
+                    <div id="collapse{{ $i - 1 }}" class="accordion-collapse collapse " aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                            {{-- Form --}}
+                            <div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Full name :</label>
+                                        <input value="{{ $Order->Fullname }}" readonly type="text" name="Fullname"
+                                            class="form-control" id="inputEmail4">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Phone Number:</label>
+                                        <input value="{{ $Order->Phone }}" readonly type="text" name="Phone"
+                                            class="form-control" id="inputEmail4">
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Address :</label>
+                                    <input value="{{ $Order->Address }}" readonly type="text" class="form-control"
+                                        id="inputAddress">
                                 </div>
 
 
+                                <div class="form-row ">
+                                    <div class="form-group col-md-4 float-left">
+                                        <label for="inputCity">City</label>
+                                        <input value="{{ $Order->City }}" readonly name="City" type="text"
+                                            class="form-control" id="inputCity">
+                                    </div>
+
+                                    <div class="form-group col-md-4  ">
+                                        <label for="inputZip">Zip</label>
+                                        <input value="{{ $Order->Zip }}" readonly name="Zip" type="text"
+                                            class="form-control" id="inputZip">
+                                    </div>
+                                    <div class="form-group col-md-2  ">
+                                        <label for="totalOrder">Total Order:</label>
+                                        <div class="d-flex">
+
+                                            <input value="{{ $Order->totalOrder }}" readonly type="text"
+                                                class="form-control" name="totalOrder" id="totalOrder">
+                                            <h6 class="auto-ml" style="margin:auto">DH</h6>
+                                        </div>
+
+
+                                    </div>
+                                </div>
                             </div>
+                            {{-- End Form --}}
+                            {{-- ITEMS --}}
+                            <table style="text-align:center;" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Plat </th>
+                                        <th style="width:20%">Quantity</th>
+                                        <th>Price </th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                @php
+                                    $j = 1;
+                                @endphp
+
+
+
+
+                                <tbody>
+                                    @if ($Order->items)
+                                        @foreach ($Order->items as $item)
+                                            <tr {{ $item->food->status == 0 ? 'style=background-color:red' : '' }}>
+                                                <td> {{ $j++ }} </td>
+
+                                                <td>{{ $item->food->title }}</td>
+
+                                                <td> {{ $item->Quantity }} </td>
+
+                                                <td> {{ $item->food->price }} DH </td>
+
+                                                <td>
+                                                    {{ $item->Quantity * $item->food->price }}DH</td>
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
+                                    @endif
+
+
+
+                                </tbody>
+                            </table>
+                            {{-- End Items --}}
                         </div>
                     </div>
-                    {{-- End Form --}}
-                    {{-- ITEMS --}}
-                    <table style="text-align:center;" class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Plat </th>
-                                <th style="width:20%">Quantity</th>
-                                <th>Price </th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        @php
-                            $j = 1;
-                        @endphp
-
-
-
-
-                        <tbody>
-                            @foreach ($Order->items as $item)
-                                <tr>
-                                    <td> {{ $j++ }} </td>
-
-                                    <td> {{ $item->food->title }}
-                                    </td>
-
-                                    <td> {{ $item->Quantity }}
-                                    </td>
-
-                                    <td> {{ $item->food->price }} DH
-                                    </td>
-
-                                    <td>
-                                        {{ $item->Quantity * $item->food->price }}DH</td>
-                                    </td>
-
-
-
-
-
-
-                                </tr>
-                            @endforeach
-
-
-                        </tbody>
-                    </table>
-                    {{-- End Items --}}
                 </div>
-            </div>
+            @endforeach
+            {{-- End Loop --}}
+
         </div>
-         @endforeach
-        {{-- End Loop --}}
+
+        {{-- Start Drop Downs --}}
 
 
-</div>
-
+    </div>
 @endsection
 @section('script')
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -173,8 +184,6 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script>
-
-
         //DELETE
 
         $(document).on('click', '#dlt', function() {
@@ -203,14 +212,6 @@
             });
 
         })
-
-
-
-
-
-
-
-
     </script>
 @endsection
 @section('style')
