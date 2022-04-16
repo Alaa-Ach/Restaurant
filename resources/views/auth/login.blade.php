@@ -1,13 +1,14 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
+<x-guest-layout >
+    <x-jet-authentication-card >
+        <x-slot name="logo" >
             {{-- <x-jet-authentication-card-logo /> --}}
-            <img style="width:70%; border-radius: 20%" src="https://i.ibb.co/PNJmJct/image.png" alt="" srcset="">
+            {{-- <img style="width:120%; border-radius: 20%" src="https://o.remove.bg/downloads/958de972-3ac9-4804-ba3c-2e16d1d159e1/Delice_Food-removebg-preview.png" alt="" srcset=""> --}}
+            <img style="width:120%; border-radius: 20%" src="assets/images/Delice Food.png" alt="" srcset="">
             {{-- <a href="https://ibb.co/PNJmJct"><img src="https://i.ibb.co/PNJmJct/image.png" alt="image" border="0"></a> --}}
 
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-jet-validation-errors  class="mb-4" />
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
@@ -15,10 +16,10 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form  method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
+            <div >
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
@@ -39,6 +40,12 @@
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
+                    </a>
+            </div>
+            <div class="flex items-center justify-end mt-4">
+
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="/register">
+                       Don't Have Account?
                     </a>
                 @endif
 

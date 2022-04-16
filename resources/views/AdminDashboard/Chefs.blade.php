@@ -148,7 +148,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 style="margin-top:10px" class="card-title">Table des Chefs</h3>
+            <h3 style="margin-top:10px" class="card-title">Table of Chefs</h3>
 
             <a onclick="bsCustomFileInput.init()" data-toggle="modal" data-target="#addChef"
                 class="btn btn-middle btn-primary" style="float:right">
@@ -159,6 +159,16 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <div>
+                <form action="{{route('Dashboard.chefsIndex')}}" method="get">
+
+                    <input  type="search" name="search" placeholder="Search here">
+                    <button id="btnSearch" class="btn btn-primary"type="submit">Search</button>
+                </form>
+
+
+            </div>
+            <br>
             <table class="table table-bordered">
                 <thead>
                     <tr>

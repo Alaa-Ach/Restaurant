@@ -50,16 +50,25 @@ Route::get('/', [HomeController::class,"index"] );
 Route::middleware(['Admin','PreventBack'])
 ->get('/Dashboard',[HomeController::class,"dashboard"])->name('dashboard');
 
-// Route::get('/dashboard')
+
 
 //////////////////////////////////// ADMIN ROUTES
 // Route::prefix('Dashboard')->name('Dashboard.')->group(['middleware'=>['Admin','PreventBack']],function () {
 Route::prefix('Dashboard')->name('Dashboard.')->middleware(['Admin','PreventBack'])->group(function () {
+
+
+
     Route::get('users',[AdminController::class,'usersIndex'])->name("usersIndex");
+
+    Route::get('usersSearch',[AdminController::class,'usersSearch'])->name("usersSearch");
+
     Route::delete('users/delete',[AdminController::class,'userDelete'])->name('userDelete');
 
 
     Route::get('plats',[AdminController::class,'platsIndex'])->name("platsIndex");
+
+    Route::get('platsSearch',[AdminController::class,'platsSearch'])->name("platsSearch");
+
     Route::post('AddPlat',[AdminController::class,'AddPlat'])->name('AddPlat');
     Route::delete('DeletePlat',[AdminController::class,'DeletePlat'])->name('DeletePlat');
     Route::post('UpdatePlat',[AdminController::class,'UpdatePlat'])->name('UpdatePlat');
@@ -71,9 +80,11 @@ Route::prefix('Dashboard')->name('Dashboard.')->middleware(['Admin','PreventBack
     Route::post('UpdateChef',[AdminController::class,'UpdateChef'])->name("UpdateChef");
 
     Route::get('Reserve',[AdminController::class,'ReserveIndex'])->name("ReserveIndex");
+    Route::get('ReserveSearch',[AdminController::class,'ReserveSearch'])->name("ReserveSearch");
     Route::delete('DeleteReserve',[AdminController::class,'DeleteReserve'])->name('DeleteReserve');
 
     Route::get('Orders',[AdminController::class,'OrdersIndex'])->name("OrdersIndex");
+    Route::get('OrdersSearch',[AdminController::class,'OrdersSearch'])->name("OrdersSearch");
     Route::delete('DeleteOrder',[AdminController::class,'DeleteOrder'])->name('DeleteOrder');
 
 

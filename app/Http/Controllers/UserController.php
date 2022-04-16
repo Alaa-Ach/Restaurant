@@ -30,7 +30,7 @@ class UserController extends Controller
             $cart=new Cart;
             $cart->idUser=$idUser;
             $cart->idPlat=$idPlat;
-            $cart->Quantity=0;
+            $cart->Quantity=1;
 
             $cart->save();
 

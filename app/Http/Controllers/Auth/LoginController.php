@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -29,7 +29,11 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
     // protected $redirectTo;
-
+//     protected function credentials(Request $request)
+// {
+//     return array_merge($request->only($this->username(), 'password'),
+//     ['isBan' => 0]);
+// }
     // protected function authenticated($request, $user)
     // {
 

@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function index(){
 
-        $food=food::all();
+        $food=food::all()->where('status','=','1');
         $chef=chef::all();
 
         return view('home')->with(["allfood"=>$food,"allchef"=>$chef]);
@@ -38,7 +38,8 @@ class HomeController extends Controller
 
     //     }
  public function dashboard(){
-    return view('AdminDashboard.AdminPanel');
+    // return view('AdminDashboard.AdminPanel');
+    return redirect('Dashboard/users');
         }
 
     // public function redirect(){

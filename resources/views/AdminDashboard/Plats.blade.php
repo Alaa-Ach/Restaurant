@@ -1,6 +1,6 @@
 @extends('layouts.AdminLayout')
 @section('title')
-    Plats
+    Menu
 @endsection
 @section('content')
     {{-- MODAL DELETED SUCCESSFUL --}}
@@ -88,6 +88,21 @@
                             <input type="text" class="form-control" id="" name="PriceADD">
                         </div>
 
+                        <div class=form-group>
+                            <label for="">Type of Menu: </label>
+                            <fieldset>
+                                <h6 id="guestCheck" style="color:red; font-size: revert; display:none;">**Please
+                                    choose number of guests</h6>
+                                <select class="form-control" name="MenuType" id="number_guests">
+                                    <option value=""></option>
+                                    <option name="1" id="1">Breakfast</option>
+                                    <option name="2" id="2">Lunch</option>
+                                    <option name="2" id="2">Dinner</option>
+
+                                </select>
+                            </fieldset>
+                        </div>
+
                         <div class="form-group">
 
 
@@ -102,6 +117,8 @@
 
                                 </div>
                             </div>
+                        </div>
+
 
 
 
@@ -138,7 +155,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 style="margin-top:10px" class="card-title">Table des Plats</h3>
+            <h3 style="margin-top:10px" class="card-title">Table of Menu</h3>
 
             <a onclick="bsCustomFileInput.init()" data-toggle="modal" data-target="#addPlat"
                 class="btn btn-middle btn-primary" style="float:right">
@@ -149,12 +166,23 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <div>
+                <form action="{{route('Dashboard.platsSearch')}}" method="get">
+
+                    <input type="search" name="search" placeholder="Search here">
+                    <button class="btn btn-primary"id="btnSearch" type="submit">Search</button>
+                </form>
+
+
+            </div>
+            <br>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>title </th>
                         <th>description</th>
+                        <th>Type</th>
                         <th>price </th>
                         <th>Image</th>
                         <th style="width: 15%">Action</th>
@@ -163,7 +191,7 @@
                 @php
                     $i = 1;
                 @endphp
-                <tbody>
+                <tbody >
                     @foreach ($food as $plat)
                         <tr>
                             <td> {{ $i++ }} </td>
@@ -176,6 +204,22 @@
 
                                 <td> <input type="text" name="description" id="" value=" {{ $plat->description }}  "
                                         readonly>
+                                </td>
+
+                                <td>
+                                    <fieldset disabled >
+                                        <h6 id="guestCheck" style="color:red; font-size: revert; display:none;">**Please
+                                            choose number of guests</h6>
+                                        <select    class="form-control" name="MenuType" id="MenuType">
+
+                                            <option value=""></option>
+
+                                            <option  {{($plat->type=="Breakfast") ? "selected":""}} name="1" id="1">Breakfast</option>
+                                            <option {{($plat->type=="Lunch") ? "selected":""}} name="2" id="2">Lunch</option>
+                                            <option {{($plat->type=="Dinner") ? "selected":""}} name="2" id="2">Dinner</option>
+
+                                        </select>
+                                    </fieldset>
                                 </td>
 
                                 <td> <input type="text" name="price" id="" value=" {{ $plat->price }}  " readonly> </td>
@@ -245,6 +289,54 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script>
+           function search() {
+            searchTXT=$('input[name=search]').val();
+
+            $.ajax({
+                url: "{{ route('Dashboard.platsSearch') }}",
+
+                type: 'GET',
+
+                data: {
+
+                    "search": searchTXT,
+
+                    "_token": $("meta[name='csrf-token']").attr("content"),
+
+                },
+                dataType: 'json',
+
+                success: function(code) {
+
+                    console.log("Search Succesfully");
+                    console.log(code);
+
+                    $('tbody').html(code);
+
+
+
+                    // $('tbody').text(success);
+                }
+
+            });
+        }
+
+
+        $(document).on('click','#btnSearch', function() {
+
+            search();
+        });
+
+        $(document).on('keyup','input[name=search]', function() {
+
+            search();
+        });
+
+
+
+
+
+
         //Replace Image
         $(document).on('click', '#replaceImg', function(e) {
             e.preventDefault();
@@ -271,6 +363,7 @@
                 $(this).css('background-color', '#cee3f5');
 
             });
+            $(this).parents('tr').css('background-color', '#cee3f5').find('fieldset').removeAttr('disabled');
 
             setTimeout(() => {
                 $(this).parents('tr').css('background-color', '').find('input').each(function(e) {
@@ -301,6 +394,12 @@
 
         })
 
+        $("td,fieldset").on('dblclick', function(e) {
+           $(this).find('fieldset').removeAttr("disabled");
+
+
+        })
+
 
         //DELETE
 
@@ -326,6 +425,7 @@
                     $("#success_tic").addClass("in");
 
                     // console.log(data.success);
+                    console.log(data.success);
                 },
                 error: function(data) {
                     console.log("error");
@@ -337,14 +437,10 @@
         //Update plats
         $(document).on('click', "#update", function() {
             $("#msgModal").text("Update Successfully");
-            // console.log($(this).attr('data-id'));
 
-            // $("#success_tic").css("display", "block");
-            // $("#success_tic").addClass("in");
-            // $("#simpleModal").modal('show');
             $form = $(this).parents("tr").find("#formUpdate");
             console.log($form)
-            // $(this).parents("tr").find("#formUpdate").submit();
+
             $form.submit();
         })
 

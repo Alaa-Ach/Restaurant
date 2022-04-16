@@ -42,7 +42,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"
+                            <button id="exitModal" type="button" class="close" data-dismiss="modal"
                                 aria-label=""><span>×</span></button>
                         </div>
 
@@ -91,8 +91,8 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                        <a href="/" class="logo">
+                            <img src="assets/images/Delice Food.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -115,7 +115,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section"><a href="/#menu">Menu</a></li>
 
                             <li class="scroll-to-section"><a href="/#chefs">Chefs</a></li>
-                            <li class="submenu">
+                            {{-- <li class="submenu">
                                 <a href="javascript:;">Features</a>
                                 <ul>
                                     <li><a href="#">Features Page 1</a></li>
@@ -123,7 +123,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <li><a href="#">Features Page 3</a></li>
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="/#reservation">Contact Us</a></li>
 

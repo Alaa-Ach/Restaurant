@@ -82,7 +82,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header style="background-color:#fdcb12" class="header-area header-sticky">
         <div class="container">
             <div class="row">
 
@@ -91,8 +91,8 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                        <a href="/" class="logo">
+                            <img src="assets/images/Delice Food.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -115,15 +115,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
 
                             <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li>
+
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
 
@@ -150,8 +142,9 @@ https://templatemo.com/tm-558-klassy-cafe
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
 
-                                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                                this.closest('form').submit();">
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                                            this.closest('form').submit();">
                                                 {{ __('Log Out') }}
                                             </a>
 
@@ -216,7 +209,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
                             @endif
 
-                                        {{-- GUEST --}}
+                            {{-- GUEST --}}
                             @if (auth()->guest())
                                 <li class="scroll-to-section"><a href="{{ route('login') }}"
                                         class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
@@ -251,7 +244,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4>KlassyCafe</h4>
+                            <h4>Delice Food</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#reservation">Make A Reservation</a>
@@ -301,12 +294,13 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h6>About Us</h6>
                             <h2>We Leave A Delicious Memory For You</h2>
                         </div>
-                        <p>Klassy Cafe is one of the best <a href="https://templatemo.com/tag/restaurant"
-                                target="_blank" rel="sponsored">restaurant HTML templates</a> with Bootstrap v4.5.2 CSS
-                            framework. You can download and feel free to use this website template layout for your
-                            restaurant business. You are allowed to use this template for commercial purposes.
-                            <br><br>You are NOT allowed to redistribute the template ZIP file on any template donwnload
-                            website. Please contact us for more information.
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam ipsam obcaecati earum minus
+                            labore ex minima excepturi rerum porro asperiores temporibus dolorem ad quo ratione eum
+                            fugiat libero, quidem, ipsa magnam harum maxime mollitia, explicabo architecto! Suscipit
+                            facere incidunt nobis corrupti excepturi odio facilis distinctio impedit aperiam aliquid quo
+                            repellat, accusantium quos repudiandae ab esse similique. Deleniti ex voluptatum magni amet
+                            magnam aperiam perferendis, cupiditate error harum quisquam culpa iure? Est mollitia
+                            reiciendis incidunt minus sed repudiandae quisquam quaerat culpa quia corporis.
                         </p>
                         <div class="row">
                             <div class="col-4">
@@ -341,7 +335,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-4">
                     <div class="section-heading">
                         <h6>Our Menu</h6>
-                        <h2>Our selection of cakes with quality taste</h2>
+                        <h2>Our selection of food with quality taste</h2>
                     </div>
                 </div>
             </div>
@@ -593,252 +587,119 @@ https://templatemo.com/tm-558-klassy-cafe
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-12">
                             <section class='tabs-content'>
                                 <article id='tabs-1'>
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="left-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-01.png" alt="">
-                                                            <h4>Fresh Chicken Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$10.50</h6>
+
+
+
+                                        {{-- test --}}
+                                        @foreach ($allfood as $food)
+                                            @if ($food->type == 'Breakfast')
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="right-list">
+
+                                                            <div class="col-lg-12">
+                                                                <div class="tab-item">
+                                                                    <img style="height: 100px"
+                                                                        src="/images/menu/{{ $food->image }}" alt="">
+                                                                    <h4>{{ $food->title }}</h4>
+                                                                    <p style="
+                                                                    width: 425px;
+                                                                    display: block;
+                                                                    overflow: clip;
+                                                                    white-space: nowrap;
+                                                                    text-overflow: ellipsis;
+
+                                                                "> {{ $food->description }}
+                                                                    </p>
+                                                                    <div class="price">
+                                                                        <h6>{{ $food->price }} DH</h6>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-02.png" alt="">
-                                                            <h4>Orange Juice</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$8.50</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-03.png" alt="">
-                                                            <h4>Fruit Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$9.90</h6>
-                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="right-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-04.png" alt="">
-                                                            <h4>Eggs Omelette</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$6.50</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-05.png" alt="">
-                                                            <h4>Dollma Pire</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$5.00</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-06.png" alt="">
-                                                            <h4>Omelette & Cheese</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$4.10</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            @endif
+                                        @endforeach
+
+                                        {{-- end test --}}
+
                                     </div>
                                 </article>
+
                                 <article id='tabs-2'>
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="left-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-04.png" alt="">
-                                                            <h4>Eggs Omelette</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$14</h6>
+                                        @foreach ($allfood as $food)
+                                            @if ($food->type == 'Lunch')
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="right-list">
+
+                                                            <div class="col-lg-12">
+                                                                <div class="tab-item">
+                                                                    <img style="height: 100px"
+                                                                        src="/images/menu/{{ $food->image }}" alt="">
+                                                                    <h4>{{ $food->title }}</h4>
+                                                                    <p style="
+                                                                    width: 425px;
+                                                                    display: block;
+                                                                    overflow: clip;
+                                                                    white-space: nowrap;
+                                                                    text-overflow: ellipsis;
+
+                                                                "> {{ $food->description }}
+                                                                    </p>
+                                                                    <div class="price">
+                                                                        <h6>{{ $food->price }} DH</h6>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-05.png" alt="">
-                                                            <h4>Dollma Pire</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$18</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-06.png" alt="">
-                                                            <h4>Omelette & Cheese</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$22</h6>
-                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="right-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-01.png" alt="">
-                                                            <h4>Fresh Chicken Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$10</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-02.png" alt="">
-                                                            <h4>Orange Juice</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$20</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-03.png" alt="">
-                                                            <h4>Fruit Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$30</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </article>
                                 <article id='tabs-3'>
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="left-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-05.png" alt="">
-                                                            <h4>Eggs Omelette</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$14</h6>
+                                        @foreach ($allfood as $food)
+                                            @if ($food->type == 'Dinner')
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="right-list">
+
+                                                            <div class="col-lg-12">
+                                                                <div class="tab-item">
+                                                                    <img style="height: 100px"
+                                                                        src="/images/menu/{{ $food->image }}" alt="">
+                                                                    <h4>{{ $food->title }}</h4>
+                                                                    <p style="
+                                                            width: 425px;
+                                                            display: block;
+                                                            overflow: clip;
+                                                            white-space: nowrap;
+                                                            text-overflow: ellipsis;
+
+                                                            "> {{ $food->description }}</p>
+                                                                    <div class="price">
+                                                                        <h6>{{ $food->price }} DH</h6>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-03.png" alt="">
-                                                            <h4>Orange Juice</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$18</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-02.png" alt="">
-                                                            <h4>Fruit Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$10</h6>
-                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="right-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-06.png" alt="">
-                                                            <h4>Fresh Chicken Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$8.50</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-01.png" alt="">
-                                                            <h4>Dollma Pire</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$9</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="assets/images/tab-item-04.png" alt="">
-                                                            <h4>Omelette & Cheese</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing
-                                                                elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$11</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </article>
                             </section>

@@ -54,5 +54,9 @@ class JetstreamServiceProvider extends ServiceProvider
     }
 
 
-
+    protected function credentials(Request $request)
+{
+    return array_merge($request->only($this->username(), 'password'),
+    ['active' => 1]);
+}
 }

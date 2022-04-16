@@ -44,6 +44,18 @@
 
         <!-- /.card-header -->
         <div class="card-body">
+            <div>
+                {{-- <form action="{{route('Dashboard.platsIndex')}}" method="get"> --}}
+
+                    <input style="border-radius: 5px;
+                    border-width: 5px;
+                    padding: 5px;" type="search" name="search" placeholder="Search here">
+                    <button  class="btn btn-primary"id="btnSearch" type="submit">Search</button>
+                {{-- </form> --}}
+
+
+            </div>
+            <br>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -115,6 +127,50 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script>
+
+function search() {
+            searchTXT=$('input[name=search]').val();
+
+            $.ajax({
+                url: "{{ route('Dashboard.ReserveSearch') }}",
+
+                type: 'GET',
+
+                data: {
+
+                    "search": searchTXT,
+
+                    "_token": $("meta[name='csrf-token']").attr("content"),
+
+                },
+                dataType: 'json',
+
+                success: function(code) {
+
+                    console.log("User Deleted Succesfully");
+
+                    $('tbody').html(code);
+
+
+
+                    // $('tbody').text(success);
+                }
+
+            });
+        }
+
+
+        $(document).on('click','#btnSearch', function() {
+
+            search();
+        });
+
+        $(document).on('keyup','input[name=search]', function() {
+
+            search();
+        });
+
+
 
 
         //DELETE

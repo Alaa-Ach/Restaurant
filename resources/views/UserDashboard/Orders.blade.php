@@ -92,8 +92,8 @@
                                 $i = 0;
                             @endphp
                             {{-- Start Drop Downs --}}
-                                {{-- Start Loop --}}
-                                @foreach ($Orders->sortByDesc('id') as $Order)
+                            {{-- Start Loop --}}
+                            @foreach ($Orders->sortByDesc('id') as $Order)
                                 <div class="accordion-item">
 
                                     <h2 class="accordion-header" id="headingOne">
@@ -104,7 +104,7 @@
                                         </button>
                                     </h2>
                                     <div id="collapse{{ $i - 1 }}" class="accordion-collapse collapse "
-                                        aria-labelledby="headingOne" >
+                                        aria-labelledby="headingOne">
                                         <div class="accordion-body">
                                             {{-- Form --}}
                                             <div>
@@ -173,30 +173,26 @@
 
 
                                                 <tbody>
-                                                    @foreach ($Order->items as $item)
-                                                        <tr>
-                                                            <td> {{ $j++ }} </td>
+                                                    @if ($Order->items)
+                                                        @foreach ($Order->items as $item)
+                                                            <tr
+                                                                {{ $item->food->status == 0 ? 'style=background-color:red' : '' }}>
+                                                                <td> {{ $j++ }} </td>
 
-                                                            <td> {{ $item->food->title }}
-                                                            </td>
+                                                                <td>{{ $item->food->title }}</td>
 
-                                                            <td> {{ $item->Quantity }}
-                                                            </td>
+                                                                <td> {{ $item->Quantity }} </td>
 
-                                                            <td> {{ $item->food->price }} DH
-                                                            </td>
+                                                                <td> {{ $item->food->price }} DH </td>
 
-                                                            <td>
-                                                                {{ $item->Quantity * $item->food->price }}DH</td>
-                                                            </td>
-
+                                                                <td>
+                                                                    {{ $item->Quantity * $item->food->price }}DH</td>
+                                                                </td>
 
 
-
-
-
-                                                        </tr>
-                                                    @endforeach
+                                                            </tr>
+                                                        @endforeach
+                                                    @endif
 
 
                                                 </tbody>
@@ -205,8 +201,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                 @endforeach
-                                {{-- End Loop --}}
+                            @endforeach
+                            {{-- End Loop --}}
 
 
                         </div>
